@@ -1,6 +1,17 @@
 'use strict'
 
-
+function count(input, list)
+{
+  var count = 0;
+  for(var i=0; i < list.length; i++)
+  {
+    if (input === list[i])
+    { 
+    	count++ ;
+    } 
+  }
+  return count;
+}
 
 module.exports = {
 	reverseString: function(str){
@@ -18,6 +29,25 @@ module.exports = {
 		}else{
 			return str_reversed;
 		}
+	},
+
+	words: function(input){
+		var result = {};
+		var key;
+
+		input = input.replace(/\s/g," ");
+		input = input.replace(/\s\s+/gi," ");
+		input = input.split(" ");
+		  
+		for(var i=0; i < input.length; i++)
+		{
+			if(!result[i])
+		    {
+		    	key	= input[i];
+		      	result[key] = count(key, input);
+		    }
+		}
+		return result;
 	}
 
 }
