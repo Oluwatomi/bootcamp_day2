@@ -1,19 +1,7 @@
 'use strict'
 
-function count(input, list)
-{
-  var count = 0;
-  for(var i=0; i < list.length; i++)
-  {
-    if (input === list[i])
-    { 
-    	count++ ;
-    } 
-  }
-  return count;
-}
-
 module.exports = {
+
 	reverseString: function(str){
 		if(str === ""){
 			return null;
@@ -41,10 +29,17 @@ module.exports = {
 		  
 		for(var i=0; i < input.length; i++)
 		{
-			if(!result[i])
+			key	= input[i];
+			if(result.hasOwnProperty(key))
 		    {
-		    	key	= input[i];
-		      	result[key] = count(key, input);
+		    	// If the key exists in the dictionary
+		    	// Increment the current value by 1 
+		    	result[key] += 1;
+		    }
+		    else{
+		    	// If the key doesn't exist in the dictionary.
+		    	// Add the key to the dictionary and initialize it to 1
+		    	result[key] = 1; 
 		    }
 		}
 		return result;
